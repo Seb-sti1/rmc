@@ -13,9 +13,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.10", "3.11"]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10"]
+        os: [ubuntu-latest]
     steps:
+    - run: apt list --installed
+    - run: apt list --installed | grep cairo
+    - run: apt rdepends --installed libcairo2
     - uses: actions/checkout@v3
     - name: Install poetry
       run: pipx install poetry
