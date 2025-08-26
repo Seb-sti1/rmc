@@ -16,6 +16,8 @@ jobs:
         python-version: ["3.10", "3.11"]
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
+    - run: apt list --installed
+    - run: apt list --installed | grep cairo
     - uses: actions/checkout@v3
     - name: Install poetry
       run: pipx install poetry
